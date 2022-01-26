@@ -26,7 +26,7 @@ export const Button = ({
         "rounded",
         "shadow-md",
         "shadow-stay-blue/30",
-        ...classes,
+        ...classes.split(" "),
     ];
 
     if (fullwidth) cssClasses.push("w-full");
@@ -52,11 +52,11 @@ export const Button = ({
 };
 
 Button.defaultProps = {
-    classes: []
+    classes: ""
 };
 
 Button.propTypes = {
-    classes: propTypes.array,
+    classes: propTypes.string,
     children: propTypes.node,
     fullwidth: propTypes.bool,
     loading: propTypes.bool,

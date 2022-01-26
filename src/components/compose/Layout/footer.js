@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import ButtonLink from "../../base/ButtonLink";
+import TextLink from "../../base/TextLink";
 import Logo from "../../base/Logo";
 
 const Footer = () => {
@@ -22,13 +22,13 @@ const Footer = () => {
                     <nav>
                         <ul>
                             <li className="mb-2.5" key="/new-account">
-                                <ButtonLink to="/new-account">New Account</ButtonLink>
+                                <TextLink to="/new-account">New Account</TextLink>
                             </li>
                             <li className="mb-2.5" key="/booking-room">
-                                <ButtonLink to="/booking-room">Start Booking a Room</ButtonLink>
+                                <TextLink to="/booking-room">Start Booking a Room</TextLink>
                             </li>
                             <li className="mb-2.5" key="/payments">
-                                <ButtonLink to="/payments">Use Payments</ButtonLink>
+                                <TextLink to="/payments">Use Payments</TextLink>
                             </li>
                         </ul>
                     </nav>
@@ -38,35 +38,33 @@ const Footer = () => {
                     <nav>
                         <ul>
                             <li className="mb-2.5" key="/careers">
-                                <ButtonLink to="/careers">Our Careers</ButtonLink>
+                                <TextLink to="/careers">Our Careers</TextLink>
                             </li>
                             <li className="mb-2.5" key="/privacy">
-                                <ButtonLink to="/privacy">Privacy</ButtonLink>
+                                <TextLink to="/privacy">Privacy</TextLink>
                             </li>
                             <li className="mb-2.5" key="/term-conditions">
-                                <ButtonLink to="/term-conditions">Term & Conditions</ButtonLink>
+                                <TextLink to="/term-conditions">Term & Conditions</TextLink>
                             </li>
                         </ul>
                     </nav>
                 </div>
                 <div>
                     <h4 className="text-xl mb-6 text-stay-dark-blue font-bold">Connect Us</h4>
-                    <nav>
-                        <ul>
-                            <li className="mb-2.5" key="/email">
-                                <ButtonLink to="/email" disabled>support@staycation.id</ButtonLink>
-                            </li>
-                            <li className="mb-2.5" key="/phone">
-                                <ButtonLink to="/phone" disabled>021 - 2208 - 1996</ButtonLink>
-                            </li>
-                            <li className="mb-2.5" key="/location">
-                                <ButtonLink to="/location" disabled>Staycation, Kemang, Jakarta</ButtonLink>
-                            </li>
-                        </ul>
-                    </nav>
+                    <ul>
+                        <li className="mb-2.5" key="/email">
+                            <TextLink to="mailto:support@staycation.id" exlink>support@staycation.id</TextLink>
+                        </li>
+                        <li className="mb-2.5" key="/phone">
+                            <TextLink to="telp:+62122081996" exlink>021 - 2208 - 1996</TextLink>
+                        </li>
+                        <li className="mb-2.5" key="/location">
+                            <TextLink disabled>Staycation, Kemang, Jakarta</TextLink>
+                        </li>
+                    </ul>
                 </div>
             </section>
-            <section className="text-center pt-5">
+            <section className="text-center py-5">
                 Copyright 2019 • All rights reserved • Staycation
             </section>
         </footer>

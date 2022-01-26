@@ -1,10 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Logo from '../../base/Logo';
-import ButtonLink from '../../base/ButtonLink';
+import TextLink from '../../base/TextLink';
 
 const navigationList = [
-    { title: 'Home', to: '/home' },
+    { title: 'Home', to: '/' },
     { title: 'Browse by', to: '/browse-by' },
     { title: 'Stories', to: '/stories' },
     { title: 'Agents', to: '/agents' },
@@ -21,11 +21,11 @@ const Header = () => {
                 </div>
                 <div>
                     <nav role='navigation'>
-                        <ul className='flex'>
+                        <ul className='flex text-stay-dark-blue'>
                             {/* TODO: handle link active / selected */}
                             {navigationList.map(({ title, to }) => (
                                 <li key={to} className='px-[17.5px]'>
-                                    <ButtonLink to={to}>{title}</ButtonLink>
+                                    <TextLink to={to}>{title}</TextLink>
                                 </li>
                             ))}
                         </ul>

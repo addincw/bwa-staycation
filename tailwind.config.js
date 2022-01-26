@@ -7,6 +7,7 @@ module.exports = {
       colors: {
         "stay-blue": "#3252DF",
         "stay-dark-blue": "#152C5B",
+        "stay-magenta": "#FF498B",
       }
     },
   },

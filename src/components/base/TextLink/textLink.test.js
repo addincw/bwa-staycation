@@ -1,20 +1,20 @@
 import { render, screen } from '@testing-library/react';
-import ButtonLink from './textLink';
+import TextLink from './textLink';
 
 test('Button WHEN rendered SHOULD display', () => {
-    render(<ButtonLink>Click Me!</ButtonLink>);
+    render(<TextLink>Click Me!</TextLink>);
 
     expect(screen.getByText('Click Me!')).toBeInTheDocument();
 });
 
 test('Button WHEN loading SHOULD show cursor-progress', () => {
-    render(<ButtonLink role="button" loading>Click Me!</ButtonLink>);
+    render(<TextLink role="button" loading>Click Me!</TextLink>);
 
     expect(screen.getByRole('button')).toHaveClass('cursor-progress');
 });
 
 test('Button WHEN disabled SHOULD show cursor-not-allowed', () => {
-    render(<ButtonLink role="button" disabled>Click Me!</ButtonLink>);
+    render(<TextLink role="button" disabled>Click Me!</TextLink>);
 
     expect(screen.getByRole('button')).toHaveClass('disabled:cursor-not-allowed');
 });
