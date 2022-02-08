@@ -1,6 +1,5 @@
 import propTypes from "prop-types";
 import React from "react";
-import { Link } from "react-router-dom";
 
 const PlaceCard = ({
   classes,
@@ -20,7 +19,7 @@ const PlaceCard = ({
     "h-44",
     "mb-4"
   ];
-  const cssThumbnailImageClasses = ["bg-cover"];
+  const cssThumbnailImageClasses = ["object-cover"];
   const cssThumbnailBaseClasses = ["w-full", "h-full"];
   const cssDescriptionClasses = ["text-gray-400"];
 
@@ -60,7 +59,7 @@ const PlaceCard = ({
     if (classes.length < 1) {
       cssContainerClasses.push("h-52");
     } else {
-      cssThumbnailClasses.splice(cssThumbnailClasses.indexOf("bg-cover"), 1);
+      cssThumbnailClasses.splice(cssThumbnailClasses.indexOf("object-cover"), 1);
       cssThumbnailImageClasses.push("h-full");
     }
   }
@@ -78,10 +77,9 @@ const PlaceCard = ({
         </figure>
         <span className="absolute top-0 right-0 bg-stay-magenta text-white px-9 py-2.5 rounded-bl-[15px]">Popular Choice</span>
       </div>
-      <div className={cssDescriptionClasses.join(" ")}>
-        <Link to="/tabby-town">
-          <h3 className={`${descTitleTextColor} text-xl mb-px`}>Tabby Town</h3>
-        </Link>
+      <div className={ cssDescriptionClasses.join(" ") }>
+        {/* FIXME: maybe need to add onClick listener to handle redirect page */}
+        <h3 className={`${descTitleTextColor} text-xl mb-px`}>Tabby Town</h3>
         <p className="text-[15px] font-light">Gunung Batu, Indonesia</p>
       </div>
     </div>

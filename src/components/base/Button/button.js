@@ -26,10 +26,10 @@ export const Button = ({
         "rounded",
         "shadow-md",
         "shadow-stay-blue/30",
-        ...classes.split(" "),
+        ...classes.split(" ")
     ];
 
-    if (fullwidth) cssClasses.push("w-full");
+    if (fullwidth) cssClasses.push("w-full", "justify-center");
 
     if (restProps.disabled || loading) { 
         cssClasses.splice(cssClasses.indexOf("hover:shadow-lg"), 1);

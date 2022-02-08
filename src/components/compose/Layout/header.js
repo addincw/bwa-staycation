@@ -22,7 +22,6 @@ const Header = () => {
                 <div>
                     <nav role='navigation'>
                         <ul className='flex text-stay-dark-blue'>
-                            {/* TODO: handle link active / selected */}
                             {navigationList.map(({ title, to }) => (
                                 <li key={to} className='px-[17.5px]'>
                                     <TextLink to={to}>{title}</TextLink>

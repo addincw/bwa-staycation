@@ -21,7 +21,13 @@ const StarRating = ({
         // percentage value is 0 - 1
         const percentage = unRenderedRate > 1 ? 1 : unRenderedRate;
         const percentageFill = starSize * percentage;
-        renderedStars.push(<Star size={starSize} percentageFill={percentageFill} />);
+        renderedStars.push(
+            <Star
+                key={`star-${index}`}
+                size={ starSize }
+                percentageFill={ percentageFill }
+            />
+        );
 
         if (unRenderedRate >= 1) {
             unRenderedRate -= 1;

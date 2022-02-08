@@ -41,7 +41,7 @@ export const TextLink = ({
         );
     }
 
-    // TODO: last css class not show in rendered NavLink
+    // FIXME: last css class not show in rendered NavLink
     return (
         <NavLink className={getCssClasses} {...restProps}>
             {children}
