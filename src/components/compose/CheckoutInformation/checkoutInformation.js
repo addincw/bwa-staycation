@@ -14,6 +14,8 @@ const CheckoutInformation = ({
 }) => {
     const {
         formValues,
+        formTouched,
+        formErrors,
         handleFieldChange
     } = useCheckoutInformation({
         compIndex,
@@ -33,12 +35,17 @@ const CheckoutInformation = ({
                     <div className="relative w-96 h-fit">
                         <PlaceCard />
                         <div className="absolute right-0 bottom-3.5 text-base text-gray-400">
-                            <span className="text-stay-dark-blue font-semibold">$480</span> per <span className="text-stay-dark-blue font-semibold">nights</span>
+                            <span className="text-stay-dark-blue font-semibold">$480</span> per <span className="text-stay-dark-blue font-semibold">night</span>
                         </div>
                     </div>
                 </div>
                 <div className="w-1/2  pt-7 pl-20">
-                    <FormField htmlFor="firstname" label="First Name">
+                    <FormField 
+                        htmlFor="firstname" 
+                        label="First Name"
+                        touched={formTouched["firstname"]}
+                        error={formErrors["firstname"]}
+                    >
                         <InputText 
                             id="firstname"
                             name="firstname"
@@ -46,7 +53,12 @@ const CheckoutInformation = ({
                             onChange={handleFieldChange}
                         />
                     </FormField>
-                    <FormField htmlFor="lastname" label="Last Name">
+                    <FormField 
+                        htmlFor="lastname" 
+                        label="Last Name"
+                        touched={formTouched["lastname"]}
+                        error={formErrors["lastname"]}
+                    >
                         <InputText 
                             id="lastname"
                             name="lastname"
@@ -54,7 +66,12 @@ const CheckoutInformation = ({
                             onChange={handleFieldChange}
                         />
                     </FormField>
-                    <FormField htmlFor="email" label="Email Address">
+                    <FormField 
+                        htmlFor="email" 
+                        label="Email Address"
+                        touched={formTouched["email"]}
+                        error={formErrors["email"]}
+                    >
                         <InputText 
                             id="email"
                             name="email"
@@ -62,12 +79,20 @@ const CheckoutInformation = ({
                             onChange={handleFieldChange}
                             />
                     </FormField>
-                    <FormField htmlFor="phone" label="Phone Number">
+                    <FormField 
+                        htmlFor="phone" 
+                        label="Phone Number"
+                        touched={formTouched["phone"]}
+                        error={formErrors["phone"]}
+                    >
                         <InputText
                             id="phone"
                             name="phone"
                             value={formValues.phone || ''}
-                            onChange={handleFieldChange}
+                            onChange={ (e) => {
+                                if (e.target.value && !/\d$/.test(e.target.value)) return; 
+                                handleFieldChange(e);
+                            }}
                         />
                     </FormField>
                 </div>

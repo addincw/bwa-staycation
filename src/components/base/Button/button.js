@@ -36,7 +36,7 @@ export const Button = ({
         cssClasses.splice(cssClasses.indexOf("hover:shadow-stay-blue/50"), 1);
 
         if (loading) {
-            cssClasses.push("bg-stay-blue/75", "cursor-progress");
+            cssClasses.push("bg-stay-blue/75", "cursor-no-drop");
         }
     }
 

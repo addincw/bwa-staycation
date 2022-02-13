@@ -4,7 +4,7 @@ import StepController from './stepController';
 import StepNavigation from './stepNavigation';
 import useStepper from './useStepper';
 
-const Stepper = ({ children }) => {
+const Stepper = ({ children, disableClickController }) => {
     const {
         allowNextStep,
         currentStep,
@@ -29,6 +29,7 @@ const Stepper = ({ children }) => {
             
             <StepController
                 allowNextStep={ allowNextStep }
+                disableOnClick={ disableClickController }
                 isFirstStep={ firstStep === currentStep }
                 isLastStep={ lastStep === currentStep }
                 onNextStep={ handleNextStep }

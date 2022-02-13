@@ -1,30 +1,31 @@
 import { useEffect } from 'react';
 import { useFormikContext } from 'formik';
  
-const useCheckoutInformation = ({ compIndex, setAllowNextStep, setCompletedSteps }) => {
+const useCheckoutInformation = ({ setAllowNextStep }) => {
     const {
+        handleChange: handleFieldChange,
         values: formValues,
-        handleChange: handleFieldChange
+        touched: formTouched,
+        errors: formErrors,
     } = useFormikContext();
 
-    useEffect(() => {
-        const { firstname, lastname, email, phone } = formValues;
-        
-        if (firstname && lastname && email && phone) {
-            setAllowNextStep(true);
-            setCompletedSteps((oldCompletedSteps) =>  ({...oldCompletedSteps, [compIndex]: true}));
-        } else {
-            setAllowNextStep(false);
-            setCompletedSteps((oldCompletedSteps) => ({ ...oldCompletedSteps, [compIndex]: false}));
-        }
+    useEffect(() => {    
+        const hasErrors = [ "firstname", "lastname", "email", "phone" ].filter((field) => {
+            return !formValues[field] || formErrors[field];
+        });
+        setAllowNextStep(hasErrors.length === 0);        
     }, [
-        compIndex,
         formValues,
+        formErrors,
         setAllowNextStep,
-        setCompletedSteps
     ]);
     
-    return { formValues, handleFieldChange };
+    return { 
+        formValues, 
+        formTouched, 
+        formErrors,
+        handleFieldChange 
+    };
 };
 
 export default useCheckoutInformation;

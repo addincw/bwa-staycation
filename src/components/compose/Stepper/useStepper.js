@@ -11,15 +11,17 @@ const useStepper = ({ children }) => {
     return React.Children.map(children, (child, index) => ({
       component: React.cloneElement(child, {
         compIndex: index+1,
-        setAllowNextStep,
-        setCompletedSteps
+        setAllowNextStep
       }),
       isLast: index+1 === lastStep
     }))
   }, [children, lastStep]);;
 
   const handleNextStep = () => {
-    if (currentStep < lastStep) setCurrentStep(currentStep+1);
+    if (currentStep < lastStep) {
+      setCurrentStep(currentStep + 1);
+      setCompletedSteps((oldCompletedSteps) =>  ({...oldCompletedSteps, [currentStep]: true}));
+    }
   };
   const handlePrevStep = () => {
     if (currentStep > firstStep) setCurrentStep(currentStep-1);

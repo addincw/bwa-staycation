@@ -3,7 +3,6 @@ import { Formik } from 'formik';
 import Layout from '../../components/compose/Layout';
 import CheckoutInformation from '../../components/compose/CheckoutInformation';
 import CheckoutBill from '../../components/compose/CheckoutBill';
-// import CheckoutSuccess from '../../components/compose/CheckoutSuccess';
 import Stepper from '../../components/compose/Stepper';
 import useCheckoutPage from './useCheckoutPage';
 
@@ -13,13 +12,14 @@ const CheckoutPage = () => {
     return (
         <Layout header="simple" footer="none">
             <Formik { ...checkoutFormProps }>
-                <form>
-                    <Stepper>
-                        <CheckoutInformation />
-                        <CheckoutBill />
-                        {/* <CheckoutSuccess /> */}
-                    </Stepper>
-                </form>
+                { ({ isSubmitting, handleSubmit }) => (
+                    <form onSubmit={handleSubmit}>
+                        <Stepper disableClickController={ isSubmitting }>
+                            <CheckoutInformation />
+                            <CheckoutBill />
+                        </Stepper>
+                    </form>
+                )}
             </Formik>
         </Layout>
   );

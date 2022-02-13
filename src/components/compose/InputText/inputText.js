@@ -1,5 +1,6 @@
 import React from 'react';
 import propTypes from 'prop-types';
+import { Field } from 'formik';
 import FormInput from '../../base/FormInput';
 
 const InputText = (props) => {
@@ -10,17 +11,15 @@ const InputText = (props) => {
     } = props;
 
     return (
-        <div className="rounded bg-slate-200 w-full flex">
-            <FormInput>
-                <input
-                    className="bg-transparent focus-visible:outline-0 w-full text-stay-dark-blue"
-                    type="text"
-                    value={initialValue}
-                    placeholder={ placeholder }
-                    {...fieldProps}
-                />
-            </FormInput>
-        </div>
+        <FormInput>
+            <Field
+                className="bg-transparent focus-visible:outline-0 w-full text-stay-dark-blue"
+                type="text"
+                value={initialValue}
+                placeholder={ placeholder }
+                {...fieldProps}
+            />
+        </FormInput>
     );
 };
 
