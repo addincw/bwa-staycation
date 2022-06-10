@@ -1,6 +1,11 @@
 import React from "react";
 
-import { formatToCurrency } from "../../utils/common";
+import Box from "@mui/material/Box";
+import Container from "@mui/material/Container";
+import Stack from "@mui/material/Stack";
+import Typography from "@mui/material/Typography";
+
+import {formatToCurrency} from "../../utils/common";
 
 import Button from "../../components/base/Button";
 import IconStat from "../../components/base/IconStat";
@@ -8,6 +13,7 @@ import Layout from "../../components/compose/Layout";
 import PlaceHighlight from "../../components/compose/PlaceHighlight";
 import TestimonialsHighlight from "../../components/compose/TestimonialsHighlight";
 import useLandingPage from "./useLandingPage";
+import {COLOR_GRAY_LIGHT, COLOR_STAY_DARK_BLUE} from "../../const";
 
 const welcomeStatistics = [
     {
@@ -27,7 +33,7 @@ const welcomeStatistics = [
     },
 ];
 
-const LandingPage = () => {   
+const LandingPage = () => {
     const {
         handleWelcomeButtonOnClick,
         mostPickedRef,
@@ -36,34 +42,54 @@ const LandingPage = () => {
     return (
         <Layout>
             {/* welcome section */}
-            <section className="pt-16 pb-14">
-                <div className="w-10/12 m-auto flex lg:justify-between">
-                    <div className="md:w-full lg:w-8/12 xl:w-4/12">
-                        <h1 className="text-[42px] text-stay-dark-blue font-bold mb-5">Forget Busy Work, Start Next Vacation</h1>
-                        <p className="text-lg text-gray-400 mb-7 whitespace-pre-line">We provide what you need to enjoy your holiday with family. Time to make another memorable moments.</p>
+            <Box component="section" sx={{paddingTop: '4rem', paddingBottom: '3.5rem'}}>
+                <Container sx={{display: {md: 'flex'}, justifyContent: 'space-between'}}>
+                    <Box sx={{width: {md: '40%'}}}>
+                        <Typography
+                            component="h1"
+                            sx={{
+                                color: COLOR_STAY_DARK_BLUE,
+                                fontSize: 42,
+                                fontWeight: 'bold',
+                                marginBottom: '1.25rem'
+                            }}
+                        >
+                            Forget Busy Work, Start Next Vacation
+                        </Typography>
+                        <Typography
+                            sx={{
+                                color: COLOR_GRAY_LIGHT,
+                                fontSize: '1.175rem',
+                                whiteSpace: 'pre-line',
+                                marginBottom: '1.75rem'
+                            }}
+                        >
+                            We provide what you need to enjoy your holiday with family. Time to make another memorable moments.
+                        </Typography>
                         <Button classes="mb-20" onClick={handleWelcomeButtonOnClick}>
                             Show Me Now
                         </Button>
-                        <div className="flex justify-between">
-                            { welcomeStatistics.map(({ value, ...stat }, index) => (
-                                <IconStat key={ index } value={ formatToCurrency(value) } { ...stat } />
-                            )) }
-                        </div>
-                    </div>
+                        <Stack direction="row" spacing={4}>
+                            {welcomeStatistics.map(({value, ...stat}, index) => (
+                                <IconStat key={index} value={formatToCurrency(value)} {...stat} />
+                            ))}
+                        </Stack>
+                    </Box>
                     <figure>
                         <img src="/images/banner.png" alt="banner" />
                     </figure>
-                </div>
-            </section>
+                </Container>
+            </Box>
+
             {/* place by group section */}
             <PlaceHighlight
                 ref={mostPickedRef}
                 layout="tile"
-                title="Most Picked" 
+                title="Most Picked"
             />
 
             <PlaceHighlight title="House with Beauty Backyard" />
-            
+
             <PlaceHighlight title="Hotels with large living room" />
 
             <PlaceHighlight title="Apartments with kitchen set" />

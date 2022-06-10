@@ -1,32 +1,39 @@
-import React, { forwardRef, useMemo } from "react";
+import React, {forwardRef, useMemo} from "react";
 import propTypes from "prop-types";
+
+import Container from "@mui/material/Container";
 
 import TileGroup from "./tileGroup";
 import GridGroup from "./gridGroup";
 
 // TODO: each placeCard wrap with link component
-const PlaceHighlight = forwardRef(({ title, layout }, ref) => {
+const PlaceHighlight = forwardRef(({title, layout}, ref) => {
     const maybeTitle = useMemo(() => {
         if (title) {
             return (
                 <header className="mb-5">
-                    <h2 className="text-stay-dark-blue text-2xl font-medium">{ title }</h2>
+                    <h2 className="text-stay-dark-blue text-2xl font-medium">{title}</h2>
                 </header>
             );
         }
 
         return null;
-    }, [ title ]);
+    }, [title]);
 
     const ContainerPlace = layout === 'grid'
         ? GridGroup
         : TileGroup;
 
     return (
-        <section ref={ ref } className="w-10/12 mx-auto mb-16 pt-2">
-            { maybeTitle }
-            { <ContainerPlace /> }
-        </section>
+        <Container
+            component="section"
+            ref={ref}
+            maxWidth="lg"
+            sx={{paddingTop: '0.5rem', paddingBottom: '4rem'}}
+        >
+            {maybeTitle}
+            {<ContainerPlace />}
+        </Container>
     );
 });
 

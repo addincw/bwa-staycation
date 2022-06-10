@@ -1,73 +1,187 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import {Link} from "react-router-dom";
+
+import Box from "@mui/material/Box";
+import Container from "@mui/material/Container";
+import List from "@mui/material/List";
+import ListItemText from "@mui/material/ListItemText";
+import Typography from "@mui/material/Typography";
+
 import TextLink from "../../base/TextLink";
 import Logo from "../../base/Logo";
+import {COLOR_GRAY_LIGHT, COLOR_STAY_DARK_BLUE, FONT_BASE_STYLES, PADDING_Y_APPBAR_STYLE, PADDING_Y_SECTION_STYLE} from "../../../const";
+
+const guideLinks = [
+    {
+        id: 'new-account',
+        label: 'New Account',
+        props: {
+            to: '/new-account',
+        }
+    },
+    {
+        id: 'booking-room',
+        label: 'Start Booking a Room',
+        props: {
+            to: '/booking-room',
+        }
+    },
+    {
+        id: 'payment',
+        label: 'Use Payments',
+        props: {
+            to: '/payment',
+        }
+    },
+];
+const exploreUsLinks = [
+    {
+        id: 'careers',
+        label: 'Our Careers',
+        props: {
+            to: '/careers',
+        }
+    },
+    {
+        id: 'privacy',
+        label: 'Privacy',
+        props: {
+            to: '/privacy',
+        }
+    },
+    {
+        id: 'term-conditions',
+        label: 'Term & Conditions',
+        props: {
+            to: '/term-conditions',
+        }
+    },
+];
+const connectUsLinks = [
+    {
+        id: 'email',
+        label: 'support@staycation.id',
+        props: {
+            to: 'mailto:support@staycation.id',
+            exlink: true
+        }
+    },
+    {
+        id: 'phone',
+        label: '021 - 2208 - 1996',
+        props: {
+            to: 'telp:+62122081996',
+            exlink: true
+        }
+    },
+    {
+        id: 'location',
+        label: 'Staycation, Kemang, Jakarta',
+        props: {disabled: true}
+    },
+];
 
 const Footer = () => {
     return (
-        <footer className="text-base text-gray-400 border-t">
-            <section className="w-10/12 mx-auto flex justify-between py-12">
-                <div>
+        <Box
+            component="footer"
+            sx={{...FONT_BASE_STYLES, color: COLOR_GRAY_LIGHT, borderTopWidth: 1}}
+        >
+            <Container
+                component="section"
+                maxWidth='lg'
+                sx={{
+                    display: {sm: 'block', md: 'flex'},
+                    justifyContent: 'space-between',
+                    ...PADDING_Y_SECTION_STYLE
+                }}
+            >
+                <Box>
                     <figure>
                         <Link to="/">
                             <Logo />
                         </Link>
-                        <figcaption className="mt-6 max-w-[258px]">
+                        <Typography component="figcaption" sx={{maxWidth: '258px', marginTop: '1.5rem'}}>
                             We kaboom your beauty holiday instantly and memorable.
-                        </figcaption>
+                        </Typography>
                     </figure>
-                </div>
-                <div>
-                    <h4 className="text-xl mb-6 text-stay-dark-blue font-bold">For Beginners</h4>
-                    <nav>
-                        <ul>
-                            <li className="mb-2.5" key="/new-account">
-                                <TextLink to="/new-account">New Account</TextLink>
-                            </li>
-                            <li className="mb-2.5" key="/booking-room">
-                                <TextLink to="/booking-room">Start Booking a Room</TextLink>
-                            </li>
-                            <li className="mb-2.5" key="/payments">
-                                <TextLink to="/payments">Use Payments</TextLink>
-                            </li>
-                        </ul>
-                    </nav>
-                </div>
-                <div>
-                    <h4 className="text-xl mb-6 text-stay-dark-blue font-bold">Exlore Us</h4>
-                    <nav>
-                        <ul>
-                            <li className="mb-2.5" key="/careers">
-                                <TextLink to="/careers">Our Careers</TextLink>
-                            </li>
-                            <li className="mb-2.5" key="/privacy">
-                                <TextLink to="/privacy">Privacy</TextLink>
-                            </li>
-                            <li className="mb-2.5" key="/term-conditions">
-                                <TextLink to="/term-conditions">Term & Conditions</TextLink>
-                            </li>
-                        </ul>
-                    </nav>
-                </div>
-                <div>
-                    <h4 className="text-xl mb-6 text-stay-dark-blue font-bold">Connect Us</h4>
-                    <ul>
-                        <li className="mb-2.5" key="/email">
-                            <TextLink to="mailto:support@staycation.id" exlink>support@staycation.id</TextLink>
-                        </li>
-                        <li className="mb-2.5" key="/phone">
-                            <TextLink to="telp:+62122081996" exlink>021 - 2208 - 1996</TextLink>
-                        </li>
-                        <li className="mb-2.5" key="/location">
-                            <TextLink disabled>Staycation, Kemang, Jakarta</TextLink>
-                        </li>
-                    </ul>
-                </div>
-            </section>
-            <section className="text-center py-5">
+                </Box>
+                <Box>
+                    <Typography
+                        variant="h6"
+                        component="h4"
+                        sx={{color: COLOR_STAY_DARK_BLUE, fontWeight: 'bold', marginBottom: '1.5rem'}}
+                    >
+                        For Beginner
+                    </Typography>
+                    <Box component="nav">
+                        <List disablePadding>
+                            {guideLinks.map((guide) => (
+                                <ListItemText
+                                    key={`${ guide.id }`}
+                                    sx={{marginBottom: '0.625rem'}}
+                                >
+                                    <TextLink {...guide.props}>
+                                        {guide.label}
+                                    </TextLink>
+                                </ListItemText>
+                            ))}
+                        </List>
+                    </Box>
+                </Box>
+                <Box>
+                    <Typography
+                        variant="h6"
+                        component="h4"
+                        sx={{color: COLOR_STAY_DARK_BLUE, fontWeight: 'bold', marginBottom: '1.5rem'}}
+                    >
+                        Explore Us
+                    </Typography>
+                    <Box component="nav">
+                        <List disablePadding>
+                            {exploreUsLinks.map((explore) => (
+                                <ListItemText
+                                    key={`${ explore.id }`}
+                                    sx={{marginBottom: '0.625rem'}}
+                                >
+                                    <TextLink {...explore.props}>
+                                        {explore.label}
+                                    </TextLink>
+                                </ListItemText>
+                            ))}
+                        </List>
+                    </Box>
+                </Box>
+                <Box>
+                    <Typography
+                        variant="h6"
+                        component="h4"
+                        sx={{color: COLOR_STAY_DARK_BLUE, fontWeight: 'bold', marginBottom: '1.5rem'}}
+                    >
+                        Connect Us
+                    </Typography>
+                    <List disablePadding>
+                        {connectUsLinks.map((connect) => (
+                            <ListItemText
+                                key={`${ connect.id }`}
+                                sx={{marginBottom: '0.625rem'}}
+                            >
+                                <TextLink {...connect.props}>
+                                    {connect.label}
+                                </TextLink>
+                            </ListItemText>
+                        ))}
+                    </List>
+                </Box>
+            </Container>
+            <Container
+                component="section"
+                maxWidth='lg'
+                sx={{...PADDING_Y_APPBAR_STYLE, textAlign: 'center'}}
+            >
                 Copyright 2019 • All rights reserved • Staycation
-            </section>
-        </footer>
+            </Container>
+        </Box>
     );
 };
 

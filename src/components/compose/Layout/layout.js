@@ -22,13 +22,13 @@ const Layout = (props) => {
     }
 
     return (
-        <div>
+        <>
             <RenderedHeader />
             <main>
                 {children}
             </main>
             {["default"].includes(footer) && <Footer />}
-        </div>
+        </>
     );
 };
 
