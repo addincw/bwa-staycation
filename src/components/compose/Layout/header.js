@@ -23,13 +23,11 @@ const Header = () => {
     return (
         <AppBar
             role='rowheader'
+            elevation={0}
             variant='outlined'
             position='sticky'
             sx={{
                 background: '#FFFFFF',
-                borderTopWidth: 0,
-                borderLeftWidth: 0,
-                borderRightWidth: 0,
                 borderBottomWidth: 1,
                 ...PADDING_Y_APPBAR_STYLE
             }}
